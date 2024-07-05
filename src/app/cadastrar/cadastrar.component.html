@@ -1,0 +1,46 @@
+<mat-card>
+  <form [formGroup]="pessoaForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.nome.valid}">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.cpf.valid}">
+      <mat-label>CPF</mat-label>
+      <input matInput formControlName="cpf">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.dataNascimento.valid}">
+      <mat-label>Data de Nascimento</mat-label>
+      <input matInput formControlName="dataNascimento" type="date">
+    </mat-form-field>
+
+    <h3>Endereço</h3>
+
+    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.logradouro.valid}">
+      <mat-label>Logradouro</mat-label>
+      <input matInput formControlName="logradouro">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.cep.valid}">
+      <mat-label>CEP</mat-label>
+      <input matInput formControlName="cep">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.numero.valid}">
+      <mat-label>Número</mat-label>
+      <input matInput formControlName="numero">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.cidade.valid}">
+      <mat-label>Cidade</mat-label>
+      <input matInput formControlName="cidade">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+  </form>
+</mat-card>
+
+<div class="message-container" *ngIf="mensagemCadastro" [ngClass]="{ 'success': sucesso, 'error': !sucesso }">
+  {{ mensagemCadastro }}
+</div>
