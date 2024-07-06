@@ -1,0 +1,55 @@
+mat-card {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.message-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  max-width: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.spaced-column {
+  padding-left: 20px;
+}
+
+.editable-cell input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  padding: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.update-button {
+  margin-top: 20px;
+}

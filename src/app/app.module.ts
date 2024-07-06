@@ -13,11 +13,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppComponent } from './app.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
+import { ConsultarComponent } from './consultar/consultar.component';
+import { AtualizarComponent } from './atualizar/atualizar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CadastrarComponent
+    CadastrarComponent,
+    ConsultarComponent,
+    AtualizarComponent
   ],
   imports: [
     BrowserModule,
