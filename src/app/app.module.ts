@@ -15,13 +15,15 @@ import { AppComponent } from './app.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { ConsultarComponent } from './consultar/consultar.component';
 import { AtualizarComponent } from './atualizar/atualizar.component';
+import { ListarComponent } from './listar/listar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CadastrarComponent,
     ConsultarComponent,
-    AtualizarComponent
+    AtualizarComponent,
+    ListarComponent
   ],
   imports: [
     BrowserModule,
