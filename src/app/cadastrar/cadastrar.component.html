@@ -1,8 +1,8 @@
 <mat-card>
   <form [formGroup]="pessoaForm" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.nome.valid}">
+    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.name.valid}">
       <mat-label>Nome</mat-label>
-      <input matInput formControlName="nome">
+      <input matInput formControlName="name">
     </mat-form-field>
 
     <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.cpf.valid}">
@@ -10,31 +10,31 @@
       <input matInput formControlName="cpf">
     </mat-form-field>
 
-    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.dataNascimento.valid}">
+    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.birthDate.valid}">
       <mat-label>Data de Nascimento</mat-label>
-      <input matInput formControlName="dataNascimento" type="date">
+      <input matInput formControlName="birthDate" type="date">
     </mat-form-field>
 
     <h3>Endereço</h3>
 
-    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.logradouro.valid}">
+    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.street.valid}">
       <mat-label>Logradouro</mat-label>
-      <input matInput formControlName="logradouro">
+      <input matInput formControlName="street">
     </mat-form-field>
 
-    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.cep.valid}">
+    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.zipcode.valid}">
       <mat-label>CEP</mat-label>
-      <input matInput formControlName="cep">
+      <input matInput formControlName="zipcode">
     </mat-form-field>
 
-    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.numero.valid}">
+    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.number.valid}">
       <mat-label>Número</mat-label>
-      <input matInput formControlName="numero">
+      <input matInput formControlName="number">
     </mat-form-field>
 
-    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.cidade.valid}">
+    <mat-form-field appearance="fill" [ngClass]="{'invalid': !pessoaForm.controls.city.valid}">
       <mat-label>Cidade</mat-label>
-      <input matInput formControlName="cidade">
+      <input matInput formControlName="city">
     </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit">Cadastrar</button>

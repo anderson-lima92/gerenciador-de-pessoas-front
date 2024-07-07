@@ -14,13 +14,13 @@ export class CadastrarComponent {
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.pessoaForm = this.fb.group({
-      nome: [''],
+      name: [''],
       cpf: [''],
-      dataNascimento: [''],
-      logradouro: [''],
-      cep: [''],
-      numero: [''],
-      cidade: ['']
+      birthDate: [''],
+      street: [''],
+      zipcode: [''],
+      number: [''],
+      city: ['']
     });
     this.mensagemCadastro = '';
     this.sucesso = false;
@@ -29,12 +29,12 @@ export class CadastrarComponent {
   onSubmit() {
     const formData = this.pessoaForm.value;
     formData.cpf = parseInt(formData.cpf, 10);
-    formData.dataNascimento = this.formatarDataNascimento(formData.dataNascimento);
-    formData.enderecos = [{
-      logradouro: formData.logradouro,
-      cep: formData.cep,
-      numero: formData.numero,
-      cidade: formData.cidade
+    formData.birthDate = this.formatarDataNascimento(formData.birthDate);
+    formData.addresses = [{
+      street: formData.street,
+      zipcode: formData.zipcode,
+      number: formData.number,
+      city: formData.city
     }];
 
     this.http.post('http://localhost:8080/pessoas', formData)

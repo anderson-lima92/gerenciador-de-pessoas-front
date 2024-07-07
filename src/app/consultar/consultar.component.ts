@@ -11,7 +11,7 @@ export class ConsultarComponent {
   consultaForm: FormGroup;
   mensagemConsulta: string;
   resultados: any[] = [];
-  displayedColumns: string[] = ['cpf', 'ativo', 'nome', 'dataNascimento', 'logradouro', 'cep', 'numero', 'cidade', 'enderecoPrincipal'];
+  displayedColumns: string[] = ['cpf', 'active', 'name', 'birthDate', 'street', 'zipcode', 'number', 'city', 'primaryAddress'];
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.consultaForm = this.fb.group({
@@ -36,31 +36,31 @@ export class ConsultarComponent {
 
   exibirResultados(resultados: any) {
     this.resultados = [];
-    if (resultados.enderecos && Array.isArray(resultados.enderecos)) {
-      resultados.enderecos.forEach((endereco: any) => {
+    if (resultados.addresses && Array.isArray(resultados.addresses)) {
+      resultados.addresses.forEach((endereco: any) => {
         this.resultados.push({
           cpf: resultados.cpf,
-          ativo: resultados.ativo ? "Ativo" : "Inativo",
-          nome: resultados.nome,
-          dataNascimento: resultados.dataNascimento,
-          logradouro: endereco.logradouro,
-          cep: endereco.cep,
-          numero: endereco.numero,
-          cidade: endereco.cidade,
-          enderecoPrincipal: endereco.enderecoPrincipal ? "Sim" : "Não"
+          active: resultados.active ? "Ativo" : "Inativo",
+          name: resultados.name,
+          birthDate: resultados.birthDate,
+          street: endereco.street,
+          zipcode: endereco.zipcode,
+          number: endereco.number,
+          city: endereco.city,
+          primaryAddress: endereco.primaryAddress ? "Sim" : "Não"
         });
       });
     } else {
       this.resultados.push({
         cpf: resultados.cpf,
-        ativo: resultados.ativo ? "Ativo" : "Inativo",
-        nome: resultados.nome,
-        dataNascimento: resultados.dataNascimento,
-        logradouro: resultados.enderecos ? resultados.enderecos[0].logradouro : "",
-        cep: resultados.enderecos ? resultados.enderecos[0].cep : "",
-        numero: resultados.enderecos ? resultados.enderecos[0].numero : "",
-        cidade: resultados.enderecos ? resultados.enderecos[0].cidade : "",
-        enderecoPrincipal: resultados.enderecos ? (resultados.enderecos[0].enderecoPrincipal ? "Sim" : "Não") : ""
+        active: resultados.active ? "Ativo" : "Inativo",
+        name: resultados.name,
+        birthDate: resultados.birthDate,
+        street: resultados.addresses ? resultados.addresses[0].street : "",
+        zipcode: resultados.addresses ? resultados.addresses[0].zipcode : "",
+        number: resultados.addresses ? resultados.addresses[0].number : "",
+        city: resultados.addresses ? resultados.addresses[0].city : "",
+        primaryAddress: resultados.addresses ? (resultados.addresses[0].primaryAddress ? "Sim" : "Não") : ""
       });
     }
   }

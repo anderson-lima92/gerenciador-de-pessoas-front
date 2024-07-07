@@ -14,7 +14,7 @@ export class AtualizarComponent {
   resultados: any;
   valoresIniciais: any;
   botaoAtualizarDesabilitado: boolean = true;
-  displayedColumns: string[] = ['cpf', 'ativo', 'nome', 'dataNascimento', 'logradouro', 'cep', 'numero', 'cidade'];
+  displayedColumns: string[] = ['cpf', 'active', 'name', 'birthDate', 'street', 'zipcode', 'number', 'city'];
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.atualizarForm = this.fb.group({
@@ -38,50 +38,59 @@ export class AtualizarComponent {
         }
       });
   }
-
+  
   exibirResultadosAtualizar(resultados: any) {
     this.resultados = resultados;
     this.valoresIniciais = {
-      nome: resultados.nome,
-      dataNascimento: resultados.dataNascimento,
-      logradouro: resultados.enderecos[0].logradouro,
-      cep: resultados.enderecos[0].cep,
-      numero: resultados.enderecos[0].numero,
-      cidade: resultados.enderecos[0].cidade
+      name: resultados.name.trim(),
+      birthDate: resultados.birthDate,
+      street: resultados.addresses[0].street.trim(),
+      zipcode: resultados.addresses[0].zipcode.trim(),
+      number: resultados.addresses[0].number.trim(),
+      city: resultados.addresses[0].city.trim()
     };
     this.botaoAtualizarDesabilitado = true; // Começa desabilitado
   }
-
+  
   verificarMudancas() {
     this.botaoAtualizarDesabilitado = !(
-      this.resultados.nome !== this.valoresIniciais.nome ||
-      this.resultados.dataNascimento !== this.valoresIniciais.dataNascimento ||
-      this.resultados.enderecos[0].logradouro !== this.valoresIniciais.logradouro ||
-      this.resultados.enderecos[0].cep !== this.valoresIniciais.cep ||
-      this.resultados.enderecos[0].numero !== this.valoresIniciais.numero ||
-      this.resultados.enderecos[0].cidade !== this.valoresIniciais.cidade
+      this.resultados.name.trim() !== this.valoresIniciais.name ||
+      this.resultados.birthDate !== this.valoresIniciais.birthDate ||
+      this.resultados.addresses[0].street.trim() !== this.valoresIniciais.street ||
+      this.resultados.addresses[0].zipcode.trim() !== this.valoresIniciais.zipcode ||
+      this.resultados.addresses[0].number.trim() !== this.valoresIniciais.number ||
+      this.resultados.addresses[0].city.trim() !== this.valoresIniciais.city
     );
   }
-
+  
   atualizarPessoa() {
     const dadosAtualizados = {
-      nome: this.resultados.nome,
-      dataNascimento: this.resultados.dataNascimento,
-      enderecos: [{
-        logradouro: this.resultados.enderecos[0].logradouro,
-        cep: this.resultados.enderecos[0].cep,
-        numero: this.resultados.enderecos[0].numero,
-        cidade: this.resultados.enderecos[0].cidade,
-        enderecoPrincipal: true
+      name: this.resultados.name,
+      birthDate: this.resultados.birthDate,
+      addresses: [{
+        street: this.resultados.addresses[0].street,
+        zipcode: this.resultados.addresses[0].zipcode,
+        number: this.resultados.addresses[0].number,
+        city: this.resultados.addresses[0].city,
+        primaryAddress: true
       }]
     };
-
+  
     this.http.put(`http://localhost:8080/pessoas/${this.resultados.cpf}`, dadosAtualizados, { responseType: 'text' })
       .subscribe({
         next: (response: string) => {
           this.mensagemAtualizar = response;
           this.sucessoAtualizar = true;
-          this.valoresIniciais = { ...dadosAtualizados, dataNascimento: this.valoresIniciais.dataNascimento };
+          
+          this.valoresIniciais = {
+            name: dadosAtualizados.name,
+            birthDate: dadosAtualizados.birthDate,
+            street: dadosAtualizados.addresses[0].street,
+            zipcode: dadosAtualizados.addresses[0].zipcode,
+            number: dadosAtualizados.addresses[0].number,
+            city: dadosAtualizados.addresses[0].city
+          };
+          
           this.botaoAtualizarDesabilitado = true; // Desabilita o botão novamente
           setTimeout(() => this.mensagemAtualizar = '', 5000);
         },

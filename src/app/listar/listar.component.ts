@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./listar.component.css']
 })
 export class ListarComponent implements OnInit {
-  displayedColumns: string[] = ['cpf', 'ativo', 'nome', 'dataNascimento', 'logradouro', 'cep', 'numero', 'cidade', 'enderecoPrincipal', 'acoes'];
+  displayedColumns: string[] = ['cpf', 'active', 'name', 'birthDate', 'street', 'zipcode', 'number', 'city', 'primaryAddress', 'actions'];
   resultados: any[] = [];
   mensagemListar: string;
   sucessoListar: boolean;
@@ -37,14 +37,14 @@ export class ListarComponent implements OnInit {
 
   ativarPessoa(pessoa: any): void {
     const corpoJSON = {
-      nome: pessoa.nome,
-      dataNascimento: pessoa.dataNascimento,
-      enderecos: [{
-        logradouro: pessoa.enderecos[0].logradouro,
-        cep: pessoa.enderecos[0].cep,
-        numero: pessoa.enderecos[0].numero,
-        cidade: pessoa.enderecos[0].cidade,
-        enderecoPrincipal: pessoa.enderecos[0].enderecoPrincipal
+      name: pessoa.name,
+      birthDate: pessoa.birthDate,
+      addresses: [{
+        street: pessoa.addresses[0].street,
+        zipcode: pessoa.addresses[0].zipcode,
+        number: pessoa.addresses[0].number,
+        city: pessoa.addresses[0].city,
+        primaryAddress: pessoa.addresses[0].primaryAddress
       }]
     };
 
