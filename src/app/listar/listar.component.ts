@@ -22,7 +22,7 @@ export class ListarComponent implements OnInit {
   }
 
   buscarDados(): void {
-    this.http.get('http://localhost:8080/pessoas/lista-pessoas')
+    this.http.get('http://localhost:8080/persons/list-persons')
       .subscribe({
         next: (data: any) => {
           this.resultados = data;
@@ -48,7 +48,7 @@ export class ListarComponent implements OnInit {
       }]
     };
 
-    this.http.put(`http://localhost:8080/pessoas/${pessoa.cpf}`, corpoJSON, { responseType: 'text' })
+    this.http.put(`http://localhost:8080/persons/${pessoa.cpf}`, corpoJSON, { responseType: 'text' })
       .subscribe({
         next: (response: string) => {
           this.mensagemListar = response;
@@ -65,7 +65,7 @@ export class ListarComponent implements OnInit {
   }
 
   desativarPessoa(cpf: string): void {
-    this.http.delete(`http://localhost:8080/pessoas/desativacao/${cpf}`, { responseType: 'text' })
+    this.http.delete(`http://localhost:8080/persons/deactivation/${cpf}`, { responseType: 'text' })
       .subscribe({
         next: (response: string) => {
           this.mensagemListar = response;
@@ -82,7 +82,7 @@ export class ListarComponent implements OnInit {
   }
 
   excluirPessoa(cpf: string): void {
-    this.http.delete(`http://localhost:8080/pessoas/${cpf}`, { responseType: 'text' })
+    this.http.delete(`http://localhost:8080/persons/${cpf}`, { responseType: 'text' })
       .subscribe({
         next: (response: string) => {
           this.mensagemListar = response;

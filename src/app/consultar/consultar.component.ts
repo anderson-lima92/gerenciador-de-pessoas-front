@@ -22,7 +22,7 @@ export class ConsultarComponent {
 
   onSubmit() {
     const cpfConsulta = this.consultaForm.value.cpfConsulta;
-    this.http.get(`http://localhost:8080/pessoas/${cpfConsulta}`)
+    this.http.get(`http://localhost:8080/persons/${cpfConsulta}`)
       .subscribe({
         next: (data: any) => {
           this.exibirResultados(data);

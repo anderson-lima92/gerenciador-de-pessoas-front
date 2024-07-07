@@ -37,7 +37,7 @@ export class CadastrarComponent {
       city: formData.city
     }];
 
-    this.http.post('http://localhost:8080/pessoas', formData)
+    this.http.post('http://localhost:8080/persons', formData)
       .subscribe({
         next: (response) => {
           this.mensagemCadastro = 'Pessoa salva com sucesso!';

@@ -26,7 +26,7 @@ export class AtualizarComponent {
 
   onSubmit() {
     const cpfConsulta = this.atualizarForm.value.cpfConsulta;
-    this.http.get(`http://localhost:8080/pessoas/${cpfConsulta}`)
+    this.http.get(`http://localhost:8080/persons/${cpfConsulta}`)
       .subscribe({
         next: (data: any) => {
           this.exibirResultadosAtualizar(data);
@@ -76,7 +76,7 @@ export class AtualizarComponent {
       }]
     };
   
-    this.http.put(`http://localhost:8080/pessoas/${this.resultados.cpf}`, dadosAtualizados, { responseType: 'text' })
+    this.http.put(`http://localhost:8080/persons/${this.resultados.cpf}`, dadosAtualizados, { responseType: 'text' })
       .subscribe({
         next: (response: string) => {
           this.mensagemAtualizar = response;
