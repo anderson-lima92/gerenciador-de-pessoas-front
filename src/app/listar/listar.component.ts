@@ -87,7 +87,7 @@ export class ListarComponent implements OnInit {
         next: (response: string) => {
           this.mensagemListar = response;
           this.sucessoListar = true;
-          this.buscarDados();
+          this.resultados = this.resultados.filter(pessoa => pessoa.cpf !== cpf);
           setTimeout(() => this.mensagemListar = '', 5000);
         },
         error: (error) => {
