@@ -1,0 +1,23 @@
+<mat-tab-group *ngIf="authService.isLoggedIn()">
+    <mat-tab label="Cadastrar Pessoa">
+      <ng-template matTabContent>
+        <app-cadastrar></app-cadastrar>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Consultar Pessoa">
+      <ng-template matTabContent>
+        <app-consultar></app-consultar>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Atualizar Pessoa">
+      <ng-template matTabContent>
+        <app-atualizar></app-atualizar>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Listar Pessoas">
+      <ng-template matTabContent>
+        <app-listar></app-listar>
+      </ng-template>
+    </mat-tab>
+</mat-tab-group>
+  

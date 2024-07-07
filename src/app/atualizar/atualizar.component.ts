@@ -86,7 +86,7 @@ export class AtualizarComponent {
           setTimeout(() => this.mensagemAtualizar = '', 5000);
         },
         error: (error) => {
-          console.error('Erro ao atualizar pessoa:', error);  // Adicione este log para depuração
+          console.error('Erro ao atualizar pessoa:', error);
           this.mensagemAtualizar = error.error?.message || 'Erro ao atualizar pessoa';
           this.sucessoAtualizar = false;
           setTimeout(() => this.mensagemAtualizar = '', 10000);
